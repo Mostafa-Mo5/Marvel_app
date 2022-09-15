@@ -13,14 +13,12 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.mostafa.marvelapp.BR
 
-abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel, AVM : ViewModel>(private val layoutId: Int) :
+abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>(private val layoutId: Int) :
     Fragment() {
 
     lateinit var viewModel: VM
     abstract val viewModelClass: Class<VM>
 
-    lateinit var audioViewModel: AVM
-    abstract val audioViewModelClass: Class<AVM>
 
     private lateinit var _binding: VDB
     val binding: VDB get() = _binding
@@ -35,8 +33,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel, AVM : ViewMod
         initViewModel()
         _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         _binding.apply {
-//            setVariable(BR.viewModel, this@BaseFragment.viewModel)
-//            setVariable(BR.audioViewModel, this@BaseFragment.audioViewModel)
+            setVariable(BR.viewModel, this@BaseFragment.viewModel)
             lifecycleOwner = this@BaseFragment
             return root
         }
@@ -44,7 +41,6 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel, AVM : ViewMod
 
     private fun initViewModel() {
         viewModel = ViewModelProvider(requireActivity())[viewModelClass]
-        audioViewModel = ViewModelProvider(requireActivity())[audioViewModelClass]
     }
 
     fun navigate(action: NavDirections) {

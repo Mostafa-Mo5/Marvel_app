@@ -7,31 +7,60 @@ import com.mostafa.marvelapp.data.response.creators.CreatorDto
 import com.mostafa.marvelapp.data.response.events.EventDto
 import com.mostafa.marvelapp.data.response.series.SeriesDto
 import com.mostafa.marvelapp.data.response.stories.StoryDto
+import com.mostafa.marvelapp.utilies.Constants
 import io.reactivex.rxjava3.core.Observable
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MarvelApiService {
 
-    @GET("characters")
-     fun getCharacter(@Query("name") name: String) : Observable<BaseResponse<CharacterDto>>
 
     @GET("characters")
-     fun getAllCharacters() : Observable<retrofit2.Response<BaseResponse<CharacterDto>>>
+    fun getCharacter(
+        @Query("name") name: String,
+        @Query("limit") limit: Int = 20,
+        @Query("apikey") apiKey: String = Constants.PUBLIC_KEY,
+        @Query("ts") timeStamp: String = Constants.timeStamp,
+        @Query("hash") hash: String = Constants.hash
+    ): Observable<CharacterDto>
+
+    @GET("characters")
+    fun getAllCharacters(
+        @Query("limit") limit: Int = 20,
+        @Query("apikey") apiKey: String = Constants.PUBLIC_KEY,
+        @Query("ts") timeStamp: String = Constants.timeStamp,
+        @Query("hash") hash: String = Constants.hash
+    ): Observable<Response<CharacterDto>>
 
     @GET("comics")
-     fun getAllComics() : Observable<retrofit2.Response<BaseResponse<ComicDto>>>
+    fun getAllComics(
+        @Query("limit") limit: Int = 20,
+        @Query("apikey") apiKey: String = Constants.PUBLIC_KEY,
+        @Query("ts") timeStamp: String = Constants.timeStamp,
+        @Query("hash") hash: String = Constants.hash
+    ): Observable<Response<ComicDto>>
 
     @GET("creators")
-     fun getAllCreators() : Observable<retrofit2.Response<BaseResponse<CreatorDto>>>
+    fun getAllCreators(
+        @Query("limit") limit: Int = 20,
+        @Query("apikey") apiKey: String = Constants.PUBLIC_KEY,
+        @Query("ts") timeStamp: String = Constants.timeStamp,
+        @Query("hash") hash: String = Constants.hash
+    ): Observable<Response<CreatorDto>>
 
     @GET("events")
-     fun getAllEvents() : Observable<retrofit2.Response<BaseResponse<EventDto>>>
+    fun getAllEvents(
+        @Query("limit") limit: Int = 20,
+        @Query("apikey") apiKey: String = Constants.PUBLIC_KEY,
+        @Query("ts") timeStamp: String = Constants.timeStamp,
+        @Query("hash") hash: String = Constants.hash
+    ): Observable<Response<EventDto>>
 
     @GET("series")
-     fun getAllSeries() : Observable<retrofit2.Response<BaseResponse<SeriesDto>>>
+    fun getAllSeries(): Observable<Response<SeriesDto>>
 
     @GET("stories")
-     fun getAllStories() : Observable<retrofit2.Response<BaseResponse<StoryDto>>>
+    fun getAllStories(): Observable<Response<StoryDto>>
 
 }
