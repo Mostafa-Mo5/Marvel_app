@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.mostafa.marvelapp.data.response.comics.Result" />
+
+        <variable
+            name="listener"
+            type="com.mostafa.marvelapp.ui.details.DetailsInteractionsListener" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:background="@drawable/rectangle"
+        android:layout_marginHorizontal="@dimen/spacing_small">
+
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:scaleType="fitXY"
+            app:image="@{item.thumbnail.path+'.'+item.thumbnail.extension}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TextStyle.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/thumbnail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textFormattingBySymbols="@{item.title}"
+            tools:text="@string/nameofcharacter" />
+
+        <TextView
+            style="@style/TextStyle.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:textColor="@color/black"
+            android:paddingBottom="@dimen/spacing_medium"
+            app:layout_constraintEnd_toStartOf="@+id/thumbnail"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:textFormattingBySymbols="@{item.description}"
+            android:hint="@string/no_description_sorry"
+            tools:text="description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

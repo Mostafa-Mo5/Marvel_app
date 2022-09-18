@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mostafa.marvelapp.ui.characters.CharactersViewModel" />
@@ -14,19 +15,93 @@
         android:layout_height="match_parent"
         tools:context=".ui.characters.CharactersFragment">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_answers"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setAdapter="@{viewModel}"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_characters" />
+            android:layout_height="match_parent"
+            app:showWhenSuccess="@{viewModel.requestState}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_character"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:items="@{viewModel.characterInfo}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setCharacterAdapter="@{viewModel}"
+                tools:listitem="@layout/item_characters" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:showWhenLoading="@{viewModel.requestState}">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_loading_internet"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/ironman_loader" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:showWhenError="@{viewModel.requestState}">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_lost_internet"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/warning" />
+
+            <TextView
+                android:id="@+id/text_oops"
+                style="@style/TextStyle.ExtraLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/oops"
+                android:textColor="@color/red"
+                app:layout_constraintBottom_toTopOf="@+id/text_lost_internet_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lottie_lost_internet" />
+
+            <TextView
+                android:id="@+id/text_lost_internet_description"
+                style="@style/TextStyle.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:gravity="center"
+                android:text="@string/there_is_no_internet_connection_please_check_it_out"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_oops" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

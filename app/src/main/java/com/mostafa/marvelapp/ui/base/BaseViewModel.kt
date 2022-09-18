@@ -1,17 +1,21 @@
 package com.mostafa.marvelapp.ui.base
 
 import androidx.lifecycle.ViewModel
+import com.mostafa.marvelapp.data.repository.MarvelRepositoryImp
+import com.mostafa.marvelapp.data.service.WepRequest
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 abstract class BaseViewModel : ViewModel() {
 
-    val compositeDisposable : CompositeDisposable by lazy { CompositeDisposable() }
+    protected val disposable = CompositeDisposable()
 
-//    protected val gameRepository = GameRepositoryImpl(API.apiService, StateWrapper())
+
+    protected val repository = MarvelRepositoryImp(WepRequest().apiService)
 
     override fun onCleared() {
         super.onCleared()
-        compositeDisposable.dispose()
+        disposable.dispose()
+
     }
 
 }

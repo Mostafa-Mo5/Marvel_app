@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mostafa.marvelapp.ui.events.EventsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:showWhenSuccess="@{viewModel.requestState}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/spacing_small"
+                android:id="@+id/recycler_character"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:items="@{viewModel.eventsInfo}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setEventsAdapter="@{viewModel}"
+                tools:listitem="@layout/item_characters" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:showWhenLoading="@{viewModel.requestState}"
+            tools:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_loading_internet"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/ironman_loader" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:showWhenError="@{viewModel.requestState}"
+            tools:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_lost_internet"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/warning" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

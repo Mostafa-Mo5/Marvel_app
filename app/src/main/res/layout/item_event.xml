@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.mostafa.marvelapp.data.response.events.Result" />
+
+        <variable
+            name="listener"
+            type="com.mostafa.marvelapp.ui.events.EventsInteractionsListener" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:background="@drawable/rectangle">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:scaleType="fitXY"
+            app:image="@{item.thumbnail.path+'.'+item.thumbnail.extension}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TextStyle.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/thumbnail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textFormattingBySymbols="@{item.title}"
+            tools:text="@string/nameofcharacter" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/TextStyle.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_extra_small"
+            android:hint="@string/no_description_sorry"
+            android:paddingBottom="@dimen/spacing_medium"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:textFormattingBySymbols="@{item.start.substring(0 ,10)+'-'+item.end.substring(0,10)}"
+            tools:text="year" />
+
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/TextStyle.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:hint="@string/no_description_sorry"
+            android:paddingBottom="@dimen/spacing_medium"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:textFormattingBySymbols="@{item.description}"
+            tools:text="description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

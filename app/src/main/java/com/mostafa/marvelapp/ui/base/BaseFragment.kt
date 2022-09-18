@@ -19,7 +19,6 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>(private val l
     lateinit var viewModel: VM
     abstract val viewModelClass: Class<VM>
 
-
     private lateinit var _binding: VDB
     val binding: VDB get() = _binding
 
@@ -41,18 +40,6 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>(private val l
 
     private fun initViewModel() {
         viewModel = ViewModelProvider(requireActivity())[viewModelClass]
-    }
-
-    fun navigate(action: NavDirections) {
-        findNavController().navigate(action)
-    }
-
-    fun popBackStack(id: Int) {
-        findNavController().popBackStack(id, false)
-    }
-
-    fun popBackStack() {
-        findNavController().popBackStack()
     }
 
     override fun onStart() {

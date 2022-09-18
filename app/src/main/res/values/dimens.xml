@@ -11,6 +11,11 @@
     <dimen name="spacing_medium">16dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_extra_small">4dp</dimen>
+    <dimen name="Space30x">60dp</dimen>
+    <dimen name="Space62x">125dp</dimen>
+    <dimen name="Space100x">200dp</dimen>
+    <dimen name="Space128x">256dp</dimen>
+    <dimen name="Space150x">300dp</dimen>
     <!-- texts -->
     <dimen name="text_xx_large">48sp</dimen>
     <dimen name="text_extra_large">24sp</dimen>
@@ -28,4 +33,16 @@
     <dimen name="timer_scale">128dp</dimen>
     <!-- images -->
     <dimen name="logo_scale">160dp</dimen>
+
+    <dimen name="FontSize6x">12sp</dimen>
+    <dimen name="FontSize7x">14sp</dimen>
+    <dimen name="FontSize8x">16sp</dimen>
+    <dimen name="FontSize9x">18sp</dimen>
+    <dimen name="FontSize10x">20sp</dimen>
+    <dimen name="FontSize11x">26sp</dimen>
+
+
+    <dimen name="Radius4X">8dp</dimen>
+    <dimen name="spacing_x_large">30dp</dimen>
+
 </resources>

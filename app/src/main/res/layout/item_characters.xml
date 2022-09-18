@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.mostafa.marvelapp.ui.characters.CharactersViewModel" />
+            type="com.mostafa.marvelapp.data.response.character.Result" />
 
         <variable
             name="listener"
@@ -17,41 +17,51 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginHorizontal="@dimen/spacing_small"
+        android:background="@drawable/rectangle"
+        android:onClick="@{() -> listener.onClickedCharacter(item)}">
+
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="150dp"
+            android:id="@+id/thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="@dimen/spacing_small"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:image="@{item.thumbnail.path+'.'+item.thumbnail.extension}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_launcher_background" />
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            style="@style/TextStyle.Medium"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            tools:text="@string/nameofcharacter"
+            android:layout_margin="@dimen/spacing_small"
+            android:layout_marginHorizontal="2dp"
+            android:textColor="@color/red"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/thumbnail"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:textFormattingBySymbols="@{item.characterName}" />
+            app:textFormattingBySymbols="@{item.name}"
+            tools:text="@string/nameofcharacter" />
 
         <TextView
-            android:layout_width="wrap_content"
+            style="@style/TextStyle.Small"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:textColor="@color/black"
+            android:paddingBottom="@dimen/spacing_small"
+            android:hint="@string/no_description_sorry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thumbnail"
+            app:textFormattingBySymbols="@{item.description}"
             tools:text="description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
