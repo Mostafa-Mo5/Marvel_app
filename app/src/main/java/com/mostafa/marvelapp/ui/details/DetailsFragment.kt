@@ -18,6 +18,7 @@ class DetailsFragment :
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllComicsOfCharactersById(args.id)
 
+        binding.recyclerDetails.adapter = DetailsAdapter(mutableListOf(), viewModel)
     }
 
     override fun observeEvents() {}

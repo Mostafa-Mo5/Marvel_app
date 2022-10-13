@@ -1,13 +1,13 @@
-package com.mostafa.marvelapp.data.response.comics
+package com.mostafa.marvelapp.data.response.events
 
 
 import com.google.gson.annotations.SerializedName
 
-data class ItemX(
+data class StoriesItems(
     @SerializedName("name")
     val name: String?,
     @SerializedName("resourceURI")
     val resourceURI: String?,
-    @SerializedName("role")
-    val role: String?
+    @SerializedName("type")
+    val type: String?
 )

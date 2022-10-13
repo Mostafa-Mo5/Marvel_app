@@ -19,6 +19,8 @@ class EventsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.resetData()
+
+        binding.recyclerEvents.adapter = EventsAdapter(mutableListOf(), viewModel)
         setOnBackButtonClickListener()
     }
 

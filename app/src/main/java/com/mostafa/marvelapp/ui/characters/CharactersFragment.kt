@@ -20,6 +20,8 @@ class CharactersFragment :
         super.onViewCreated(view, savedInstanceState)
         viewModel.resetData()
         setOnBackButtonClickListener()
+
+        binding.recyclerCharacter.adapter = CharactersAdapter(mutableListOf(), viewModel)
     }
 
 

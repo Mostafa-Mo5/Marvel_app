@@ -8,8 +8,8 @@ data class Stories(
     val available: Int?,
     @SerializedName("collectionURI")
     val collectionURI: String?,
-    @SerializedName("items")
-    val items: List<ItemXXX>?,
+    @SerializedName("comicsItems")
+    val items: List<ItemStores>?,
     @SerializedName("returned")
     val returned: Int?
 )

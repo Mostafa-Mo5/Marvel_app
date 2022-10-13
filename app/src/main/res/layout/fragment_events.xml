@@ -21,15 +21,14 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="@dimen/spacing_small"
-                android:id="@+id/recycler_character"
+                android:id="@+id/recycler_events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:items="@{viewModel.eventsInfo}"
+                app:Items="@{viewModel.eventsInfo}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:setEventsAdapter="@{viewModel}"
                 tools:listitem="@layout/item_characters" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

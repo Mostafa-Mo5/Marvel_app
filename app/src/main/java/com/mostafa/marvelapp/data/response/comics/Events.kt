@@ -8,7 +8,7 @@ data class Events(
     val available: Int?,
     @SerializedName("collectionURI")
     val collectionURI: String?,
-    @SerializedName("items")
+    @SerializedName("comicsItems")
     val items: List<Any?>?,
     @SerializedName("returned")
     val returned: Int?
