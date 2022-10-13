@@ -5,4 +5,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nameofcharacter">nameOfCharacter</string>
+    <string name="no_description_sorry">no description published</string>
+    <string name="close_dialog">Close Dialog</string>
+    <string name="exit_dialog_title">Are you sure?</string>
+    <string name="exit">Exit</string>
+    <string name="exit_subtitle">Are you sure you want to leave</string>
+    <string name="there_is_no_internet_connection_please_check_it_out">There is no internet connection \n Please check it out</string>
+
+    <string name="oops">Oops!</string>
+
 </resources>

@@ -38,8 +38,8 @@ abstract class BaseAdapter<T>(
 
     private fun bind(holder: ItemViewHolder, position: Int) {
         holder.binding.apply {
-//            setVariable(BR.item, _items[position])
-//            setVariable(BR.listener, _listener)
+            setVariable(BR.item, _items[position])
+            setVariable(BR.listener, _listener)
         }
     }
 
